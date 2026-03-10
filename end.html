@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lời cuối cùngggg</title>
+    <style>
+.petal {
+    position: absolute;
+    background-color: #ff4d6d; 
+    border-radius: 150% 0 150% 0; 
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 1;
+    animation: petal-fall linear infinite;
+}
+
+@keyframes petal-fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg) translateX(100px);
+        opacity: 0;
+    }
+}
+
+
+.letter-container {
+    z-index: 10; 
+    position: relative;
+}
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;500&display=swap');
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0a0005;
+            color: #ff80ab;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+        }
+
+        .letter-container {
+            text-align: center;
+    padding: 30px 40px;
+    border: 1px solid rgba(255, 128, 171, 0.3);
+    background: rgba(20, 0, 10, 0.85); 
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 0, 64, 0.2);
+    max-width: 600px;
+    width: 85%;
+    max-height: 80vh; 
+    overflow-y: auto; 
+    animation: fadeIn 2s ease-in-out;
+    position: relative;
+    scrollbar-width: thin; 
+    scrollbar-color: #ff80ab transparent;
+        }
+        .letter-container::-webkit-scrollbar {
+    width: 6px;
+}
+.letter-container::-webkit-scrollbar-thumb {
+    background: #ff80ab;
+    border-radius: 10px;
+}
+
+.content-wrapper {
+    padding-bottom: 20px;
+}
+
+p {
+    font-size: 1.15rem;
+    line-height: 2; 
+    color: #fceea7;
+    text-align: justify; 
+    margin-bottom: 20px;
+}
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff, #ff80ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #fceea7;
+        }
+
+        .back-btn {
+            margin-top: 30px;
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid #ff80ab;
+            color: #ff80ab;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #ff80ab;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter-container">
+        <h1>Gửi các vợ của zai A7</h1>
+        <p>
+            Helloooo. Thật sự sin nổi vì tổ chức ngày 8/3 muộn như này, có lẽ các bạn cũng thấy khá là hụt hẫng và không vui. Kệ các bạn, không cũng là có mà có vẫn là có:)) nhưng tụi mình chúc các bạn nữ luôn vui vẻ, mạnh khỏe, kiếm được chồng giàu, đẹpchai như bọn tớ:33 và đặc biệt là đỗ NV1 vào trường mình mơ ước nhé!!! Lần này có lẽ là lần cuối chúng mình có những sự kiện như này rồi, mong rằng cả lớp mình sẽ cùng nhau đỗ NV1 và đoàn kết hơn nhóe. Ra trường rồi, đi đâu, iu ai hay như nào cũng đừng quên bọn tôi nha mấy bà :)<br>
+<span style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: #ff80ab;">
+            Cre: Hội người đẹp chai A7-K63_HTT1:))
+        </span>
+        </p>
+        <button class="back-btn" onclick="window.location.href='index.html'">Xem lại ở đêy</button>
+    </div>
+    <audio id="bg-music" autoplay loop>
+        <source src="./audio_end.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function createPetal() {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+
+    const size = Math.random() * 15 + 10 + 'px';
+    petal.style.width = size;
+    petal.style.height = size;
+
+    petal.style.left = Math.random() * 100 + 'vw';
+
+    const duration = Math.random() * 5 + 5 + 's';
+    petal.style.animationDuration = duration;
+
+    petal.style.animationDelay = Math.random() * 5 + 's';
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, parseFloat(duration) * 1000);
+}
+
+for (let i = 0; i < 30; i++) {
+    createPetal();
+}
+setInterval(createPetal, 300); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Vì déo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&display=swap');
+        
+        body {
+            margin: 0; padding: 0;
+            background: #0a0005;
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            color: white;
+        }
+        #video-title {
+            margin-bottom: 20px;
+            color: #ff80ab;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 90%; max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(255, 0, 64, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(255, 128, 171, 0.3);
+            background: #000;
+        }
+        video { width: 100%; display: block; max-height: 65vh; }
+        /* Hiện số lượng video */
+        .video-counter {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .controls-box {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border: 1px solid #ff80ab;
+        }
+        .next-video-btn {
+            background: rgba(255, 128, 171, 0.1);
+            color: #ff80ab;
+        }
+
+        .final-next-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff80ab);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            display: none;
+        }
+
+        .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body { animation: fadeIn 1s; }
+    </style>
+</head>
+<body>
+
+    <div id="video-title">🎞️ Đang xem kỷ niệm...</div>
+
+    <div class="video-wrapper">
+        <video id="mainVideo" controls autoplay>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="video-counter" id="counter">Video 1 / 1</div>
+
+    <div class="controls-box">
+        <button id="nextVidBtn" class="btn next-video-btn" onclick="playNext()">Video tiếp theo ⏭️</button>
+        <button id="finalBtn" class="btn final-next-btn" onclick="goToEnding()">Đọc lời nhắn 💌</button>
+    </div>
+
+    <script>
+        // Video List:<
+        const videoList = [
+            { src: '(1).mp4', title: 'Video 1' },
+            { src: '(2).mp4', title: 'Video 2' },
+            { src: '(3).mp4', title: 'Video 3' },
+            { src: '(4).mp4', title: 'Video 4' },
+            { src: '(5).mp4', title: 'Video 5' },
+            { src: '(6).mp4', title: 'Video 6' },
+            { src: '(7).mp4', title: 'Video 7' },
+            { src: '(8).mp4', title: 'Video 8' },
+            { src: '(9).mp4', title: 'Video 9' },
+            { src: '(10).mp4', title: 'Video 10' },
+            { src: '(11).mp4', title: 'Video 11' },
+            { src: '(12).mp4', title: 'Video 12' },
+            { src: '(13).mp4', title: 'Video 13' },
+            { src: '(14).mp4', title: 'Video 14' },
+        ];
+        let currentIndex = 0;
+        const videoElement = document.getElementById('mainVideo');
+        const titleElement = document.getElementById('video-title');
+        const counterElement = document.getElementById('counter');
+        const nextVidBtn = document.getElementById('nextVidBtn');
+        const finalBtn = document.getElementById('finalBtn');
+        function loadVideo(index) {
+            videoElement.src = videoList[index].src;
+            titleElement.innerText = videoList[index].title;
+            counterElement.innerText = `Kỷ niệm ${index + 1} / ${videoList.length}`;
+            videoElement.play();
+            if (index === videoList.length - 1) {
+                nextVidBtn.style.display = 'none';
+                finalBtn.style.display = 'block';
+            }
+        }
+        function playNext() {
+            if (currentIndex < videoList.length - 1) {
+                currentIndex++;
+                loadVideo(currentIndex);
+            }
+        }
+        function goToEnding() {
+            document.body.style.transition = "opacity 0.8s";
+            document.body.style.opacity = "0";
+            setTimeout(() => { window.location.href = 'end.html'; }, 800);
+        }
+        window.onload = () => { loadVideo(0); };
+    </script>
+</body>
+</html>
